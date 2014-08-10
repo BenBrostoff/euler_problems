@@ -7,9 +7,9 @@ def fib_sequence(value)
   return fib
 end
 
-def even_fib_sum
-  even_fib = fib_sequence(4_000_000).find_all{|i| i % 2 == 0}
+def even_fib_sum(value)
+  even_fib = fib_sequence(value).find_all{|i| i % 2 == 0}
   even_fib.inject{ |sum, x| sum + x }
 end
 
-print even_fib_sum
+print even_fib_sum(4_000_000)

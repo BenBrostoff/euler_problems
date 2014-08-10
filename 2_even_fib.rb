@@ -1,6 +1,6 @@
 def fib_sequence(value)
   fib, i = [1,1], 0
-  while fib.last <= value
+  while fib[-1] <= value
     fib << fib[i] + fib[i+1]
     i += 1
   end

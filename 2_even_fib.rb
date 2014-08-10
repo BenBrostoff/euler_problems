@@ -1,18 +1,15 @@
-def solver
-array = [0,1]
-i = 0
-while array.last <= 4000000
-fib = array.push(array[i] + array[i+1])
-i += 1
-end
-fib.drop(2)
-end
-
-def evenFib
-evenFib = solver.find_all{|i| i % 2 == 0}
-sum = 0
-evenFib.each{|i| sum += i}
-return sum
+def fib_sequence(value)
+  fib, i = [1,1], 0
+  while fib.last <= value
+    fib << fib[i] + fib[i+1]
+    i += 1
+  end
+  return fib
 end
 
-evenFib
+def even_fib_sum
+  even_fib = fib_sequence(4_000_000).find_all{|i| i % 2 == 0}
+  even_fib.inject{ |sum, x| sum + x }
+end
+
+print even_fib_sum

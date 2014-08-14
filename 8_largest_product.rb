@@ -19,7 +19,7 @@ def product_test(array)
   array.each do |series|
     product <<  series.inject{|sum, n| sum * n}
   end
-  product.max
+  return product.max
 end
 
 p product_test(array_creator)

@@ -9,4 +9,14 @@ def collatz(num):
       sequence.append(num)
   return sequence
 
-print collatz(13)
+def long_seq():
+  long_collatz = []
+  actual = []
+  for num in range(1, 1000001):
+    actual.append(num)
+    long_collatz.append(len(collatz(num)))
+  final = long_collatz.index(max(long_collatz))
+  return actual[final]
+
+ 
+print long_seq()

@@ -17,6 +17,5 @@ def long_seq():
     long_collatz.append(len(collatz(num)))
   final = long_collatz.index(max(long_collatz))
   return actual[final]
-
- 
+  
 print long_seq()

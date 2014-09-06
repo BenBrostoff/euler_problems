@@ -23,16 +23,14 @@ def add_arrays(array_1, array_2)
 end
 
 def path(file) 
-  array = parse(file)
-  rev = array.reverse
-  sum_all = []
+  rev = parse(file).reverse
   rev.each_with_index do |row, index|
-    if index < array.length - 1
+    if index < rev.length - 1
       rev[index] = shorten_by_one(rev[index])
       rev[index + 1] = add_arrays(rev[index], rev[index + 1])
     end
   end
-  return array[0][0] + rev[rev.length - 2].max
+  return rev[-1]
 end 
 
 puts path("18_tri.txt")

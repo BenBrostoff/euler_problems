@@ -5,7 +5,7 @@ def dist_pow(a_up, a_low, b_up, b_low)
       sol << a ** b
     end
   end
-  return sol.uniq.size
+  return sol.uniq
 end
 
-p dist_pow(2,100,2,100)
+p dist_pow(2,100,2,100).size

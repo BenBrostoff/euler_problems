@@ -9,7 +9,7 @@ def eratosthenes(n)
     end
     # ex 2,4,6,8, then 3,6,9
     # set element in array to nil if step touches it
-nums.compact # strip out nils, end up with primes
+  nums.compact # strip out nils, end up with primes
 end
  
 def prime_count(n)
@@ -21,5 +21,4 @@ def prime_count(n)
 end
 
 
-
-prime_count(1000) #7,919
+# prime_count(1000) #7,919

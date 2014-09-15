@@ -30,5 +30,5 @@ def solve(array)
   return count
 end
 
-p solve(eratosthenes(1000000))
+# p solve(eratosthenes(1000000))
 

@@ -8,18 +8,18 @@ def check_trunc(num)
     hold << num_array[0..index].join("").to_i 
   end
   final = hold.uniq
-  return final == final.select {|x| Prime.prime?(x) }
+  return final == final.select { |x| Prime.prime?(x) }
 end
 
-def check_odd_dig(num)
+def check_pre_req(num)
   num.to_s.split("").each_with_index do |dig, index|
-    return false if dig % 2 == 0 && index != 0 
+    return false if (dig % 2 == 0 || dig == 5) && index != 0
   end
   return true
 end
 
 def narrow(array)
-  array.find_all { |x| check_odd_dig(x) == true && x >= 11 }
+  array.find_all { |x| check_pre_req(x) == true && x >= 11 }
 end
 
 def solve

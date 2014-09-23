@@ -2,8 +2,7 @@ def parse(file)
   array = []
   file = File.new(file, "r")
   while (line = file.gets)
-    line = line.split(" ").map {|x| x.to_i}
-    array << line
+    array << line.split(" ").map {|x| x.to_i}
   end
   return array
 end
@@ -23,14 +22,18 @@ def add_arrays(array_1, array_2)
 end
 
 def path(file) 
-  rev = parse(file).reverse
-  rev.each_with_index do |row, index|
-    if index < rev.length - 1
-      rev[index] = shorten_by_one(rev[index])
-      rev[index + 1] = add_arrays(rev[index], rev[index + 1])
+  invert_tri = parse(file).reverse #work from bottom up 
+  p invert_tri.length
+  invert_tri.each_with_index do |row, index|
+    if index < invert_tri.length - 1
+      # set current index to array reflective of maximized sums
+      invert_tri[index] = shorten_by_one(invert_tri[index])
+      # combine with next array 
+      invert_tri[index + 1] = add_arrays(invert_tri[index], invert_tri[index + 1])
     end
   end
-  return rev[-1]
+  p invert_tri.length
+  return invert_tri[-1]
 end 
 
 puts path("18_tri.txt")

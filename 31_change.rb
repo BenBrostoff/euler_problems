@@ -1,10 +1,15 @@
 def change_combos(target, vals)
+  # initialize array
+  # start w/ 1 as x/x = 1
   ways = [1] + [0] * target
   vals.each do |val|
+    # attempt each coin value
     (val.. target).each do |x|
-        ways[x] += ways[x-val]
+        # sum smaller combos & leverage previous answers
+        ways[x] += ways[x - val]
       end
   end
+  p ways
   return ways[target]
 end
 

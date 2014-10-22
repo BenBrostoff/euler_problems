@@ -10,27 +10,21 @@ def down_up_left_right(grid, size_x, size_y, num):
             check.append(product_out(elem[x:x+num]))
     return check
 
-def diag(grid, size_x, size_y, num):
+def diag(grid, size_x, size_y, num, reverse=0):
     check, temp = [], []
     for x in xrange(size_x - (num - 1)):
         for y in xrange(size_y - (num - 1)):
             temp = []
-            hold_x, hold_y = x, y
+            if reverse == 0:
+                hold_x, hold_y = x, y
+            else:
+                hold_x, hold_y = size_x - (x+1), y    
             for y in xrange(num):
                 temp.append(grid[hold_x][hold_y])
-                hold_x, hold_y = hold_x + 1, hold_y + 1
-            check.append(product_out(temp))
-    return check
-
-def diag_reverse(grid, size_x, size_y, num):
-    check, temp = [], []
-    for x in xrange(size_x - (num - 1)):
-        for y in xrange(size_y - (num - 1)):
-            temp = []
-            hold_x, hold_y = size_x - (x+1), y
-            for y in xrange(num):
-                temp.append(grid[hold_x][hold_y])
-                hold_x, hold_y = hold_x - 1, hold_y + 1
+                if reverse == 0:
+                    hold_x, hold_y = hold_x + 1, hold_y + 1
+                else:
+                    hold_x, hold_y = hold_x - 1, hold_y + 1
             check.append(product_out(temp))
     return check
 
@@ -40,7 +34,7 @@ def solve(grid, size_x, size_y, num):
     test.append(down_up_left_right(results, size_x, size_y, num))
     test.append(down_up_left_right(transposed, size_x, size_y, num))
     test.append(diag(results, size_x, size_y, num))
-    test.append(diag_reverse(results, size_x, size_y, num))
+    test.append(diag(results, size_x, size_y, num, 1))
     test = [item for sublist in test for item in sublist] #flatten
     return max(test)
 

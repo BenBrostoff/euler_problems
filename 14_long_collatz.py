@@ -11,7 +11,7 @@ def collatz(num):
 
 def long_seq():
   long_collatz = []
-  for num in range(1, 1000001):
+  for num in xrange(1, 1000001):
     long_collatz.append([num, len(collatz(num))])
   max_index = long_collatz.index(max(long_collatz, key=lambda x: x[1]))
   return long_collatz[max_index][0]
